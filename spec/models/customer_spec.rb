@@ -21,4 +21,10 @@ RSpec.describe Customer, type: :model do
     expect(customer.vip).to eq(false) # ou be_falsey
   end
   it { expect { create(:customer) }.to change { Customer.all.size }.by(1) } # Testa se o create(:customer) cria um novo customer
+
+  it "Usando o attributes_for" do # Testa se o attributes_for(:customer) cria um novo customer
+    attrs = attributes_for(:customer) # ou attributes_for(:customer_vip)
+    customer = Customer.create(attrs) # ou Customer.create(attrs)
+    expect(customer.full_name).to start_with("Sr. ") # ou expect(customer[:full_name]).to start_with("Sr. ")
+  end
 end
