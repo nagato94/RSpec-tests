@@ -18,7 +18,7 @@ FactoryBot.define do
     end
 
     after(:create) do |customer, evaluator| # Sobrescreve o atributo name evaluando se o upcased é true
-      customer.name.upcase! if evaluator.upcased
+      customer.name.upcase! if evaluator.upcased # customer em upcase
     end
   end
 end
