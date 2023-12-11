@@ -27,4 +27,9 @@ RSpec.describe Customer, type: :model do
     customer = Customer.create(attrs) # ou Customer.create(attrs)
     expect(customer.full_name).to start_with("Sr. ") # ou expect(customer[:full_name]).to start_with("Sr. ")
   end
+
+  it "Atributo transitório" do # Testa se o attributes_for(:customer, upcased: true) cria um novo customer com o name em upcase
+    customer = create(:customer_default, upcased: true) # ou create(:customer_vip, upcased: true)
+    expect(customer.name.upcase).to eq(customer.name)
+  end
 end
